@@ -41,7 +41,7 @@ namespace Asteroids3D
 
         protected Camera(Vector4D position)
         {
-            fov = .002F;        // Field Of View -  I have no idea what units this ended up being in.  Certainly nothing human.
+            fov = .001F;        // Field Of View - The units on this are messed up. Investigating.
             aspRat = 1F;         // Aspect Ratio - this is supposed to match the screen.  I think maybe GDI's graphics object already accounts for this.
             zNear = 1F;         // How close to the camera's position objects can render before they get culled
             zFar = 1000F;      // How far away they can be before they're culled

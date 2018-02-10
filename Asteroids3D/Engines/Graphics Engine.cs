@@ -125,14 +125,17 @@ namespace Asteroids3D
             cullData.height = (float)cullData.camRelativeCoordinates.Z * cullData.yMultiplier;
             cullData.d = radius * cullData.ySphereFactor;
 
-            if (cullData.camRelativeCoordinates.Y > cullData.height * .5F + cullData.d || cullData.camRelativeCoordinates.Y < -cullData.height * .5F - cullData.d)
+            // This can be reduced to make frustum culling more noticeable around the edges of the screen for testing purposes. At a value of 1, culling *should* not be seen.
+            float marginFudge = .9F;
+
+            if (cullData.camRelativeCoordinates.Y > cullData.height * marginFudge + cullData.d || cullData.camRelativeCoordinates.Y < -cullData.height * marginFudge - cullData.d)
                 return false;
 
             cullData.camRelativeCoordinates.X = Vector3D.dot(cullData.utilityVector, camera.xAxis);
             cullData.width = (float)cullData.camRelativeCoordinates.Z * cullData.xMultiplier;
             cullData.d = radius * cullData.xSphereFactor;
 
-            if (cullData.camRelativeCoordinates.X > cullData.width * .5F + cullData.d || cullData.camRelativeCoordinates.X < -cullData.width * .5F - cullData.d)
+            if (cullData.camRelativeCoordinates.X > cullData.width * marginFudge + cullData.d || cullData.camRelativeCoordinates.X < -cullData.width * marginFudge - cullData.d)
                 return false;
 
             return true;

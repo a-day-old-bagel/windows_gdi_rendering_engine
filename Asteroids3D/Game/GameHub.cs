@@ -52,7 +52,7 @@ namespace Asteroids3D
             System.Windows.Forms.Cursor.Hide();
 
             /// Makes the games camera. Use an FPSCamera for walking or a FreeCamera for space ship like controls
-            camera = new FPSCamera(new Vector4D(500, 20, -60, 1));
+            camera = new FreeCamera(new Vector4D(500, 20, -60, 1));
 
             /// The WorldLights struct holds all of the lights for the game world.  It is given to the graphics engine.
             lights = new WorldLights();
@@ -71,7 +71,7 @@ namespace Asteroids3D
 
             testObjs = new GameEntity[128];
             for (int i = 0; i < 128; i++)
-                testObjs[i] = new GameObject                // In a GameObject call, we have...
+                testObjs[i] = new GameObject
                    (i * 4 + 8, (i * 20) % 100, 8,       // Position     x, y, z,
                      0 , 0, 0,                          // Velocity     x, y, z,
                      0 , 0, 0,                          // Rotation     x, y, z,
